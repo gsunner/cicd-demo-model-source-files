@@ -17,8 +17,6 @@ RUN set -x && \
 ###############################################################################
 # Install miniconda
 #
-# using Miniconda3-4.5.4-Linux-x86_64.sh, becuase we need Pyhton version 3.6.5
-#
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
