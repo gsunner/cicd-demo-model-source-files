@@ -20,8 +20,12 @@
                     "value": "%GITHUB_TOKEN%"
                 },
                 {
-                    "name": "build-image-enabled",
+                    "name": "training-enabled",
                     "value": "true"
+                },
+                {
+                    "name": "build-image-enabled",
+                    "value": "false"
                 },
                 {
                     "name": "update-manifest-enabled",
@@ -35,6 +39,19 @@
                 "name": "build-steps",
                 "steps": [
                     [
+                        {
+                            "arguments": {
+                                "parameters": [
+                                    {
+                                        "name": "cmdargs",
+                                        "value": "ls *"
+                                    }
+                                ]
+                            },
+                            "name": "training",
+                            "template": "training-container",
+                            "when": "{{workflow.parameters.training-enabled}} == true"
+                        },
                         {
                             "arguments": {
                                 "parameters": [
@@ -65,6 +82,42 @@
                         }
                     ]
                 ]
+            },
+            {
+                "container": {
+                    "args": [
+                        "{{inputs.parameters.cmdargs}}"
+                    ],
+                    "command": [
+                        "sh",
+                        "-c"
+                    ],
+                    "image": "127.0.0.1:5000/deep-mnist-training:0.1",
+                    "volumeMounts": [
+                        {
+                            "mountPath": "/var/run/docker.sock",
+                            "name": "docker-sock-volume"
+                        }
+                    ]
+                },
+                "inputs": {
+                    "artifacts": [
+                        {
+                            "git": {
+                                "repo": "https://{{workflow.parameters.github-user}}:{{workflow.parameters.github-token}}@github.com/{{workflow.parameters.github-user}}/cicd-demo-model-source-files.git",
+                                "revision": "master"
+                            },
+                            "name": "model-source-files",
+                            "path": "/work/model-source-files"
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "cmdargs"
+                        }
+                    ]
+                },
+                "name": "training-container"
             },
             {
                 "container": {
