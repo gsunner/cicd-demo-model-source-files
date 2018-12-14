@@ -44,7 +44,7 @@
                                 "parameters": [
                                     {
                                         "name": "cmdargs",
-                                        "value": "ls *"
+                                        "value": "set -x && cd /work/model-source-files/models/deep-mnist && make train && ls -alt"
                                     }
                                 ]
                             },
