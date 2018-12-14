@@ -40,7 +40,7 @@
                                 "parameters": [
                                     {
                                         "name": "cmdargs",
-                                        "value": "until docker ps; do sleep 3; done; set -x && cd /work/model-source-files/models/simple-model && make MODEL_VERSION={{workflow.parameters.model-version}} build_model_image && docker images && docker images | grep simple-model && make MODEL_VERSION={{workflow.parameters.model-version}} push_to_registry"
+                                        "value": "until docker ps; do sleep 3; done; set -x && cd /work/model-source-files/models/deep-mnist && make MODEL_VERSION={{workflow.parameters.model-version}} build_model_image && docker images && docker images | grep deep-mnist && make MODEL_VERSION={{workflow.parameters.model-version}} push_to_registry"
                                     }
                                 ]
                             },
