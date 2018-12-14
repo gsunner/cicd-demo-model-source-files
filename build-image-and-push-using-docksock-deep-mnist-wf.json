@@ -94,7 +94,7 @@
                         "sh",
                         "-c"
                     ],
-                    "image": "127.0.0.1:5000/deep-mnist-training:0.1",
+                    "image": "127.0.0.1:5000/deep-mnist-training:0.2",
                     "volumeMounts": [
                         {
                             "mountPath": "/var/run/docker.sock",
