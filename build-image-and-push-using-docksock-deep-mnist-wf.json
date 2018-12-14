@@ -21,7 +21,7 @@
                 },
                 {
                     "name": "build-image-enabled",
-                    "value": "false"
+                    "value": "true"
                 },
                 {
                     "name": "update-manifest-enabled",
