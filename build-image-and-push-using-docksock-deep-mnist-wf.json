@@ -21,11 +21,11 @@
                 },
                 {
                     "name": "training-enabled",
-                    "value": "true"
+                    "value": "false"
                 },
                 {
                     "name": "build-image-enabled",
-                    "value": "false"
+                    "value": "true"
                 },
                 {
                     "name": "update-manifest-enabled",
@@ -64,7 +64,7 @@
                                 ]
                             },
                             "name": "build-image",
-                            "template": "image-builder",
+                            "template": "training-container",
                             "when": "{{workflow.parameters.build-image-enabled}} == true"
                         }
                     ],
