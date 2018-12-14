@@ -51,7 +51,9 @@
                             "name": "training",
                             "template": "training-container",
                             "when": "{{workflow.parameters.training-enabled}} == true"
-                        },
+                        }
+                    ],
+                    [
                         {
                             "arguments": {
                                 "parameters": [
